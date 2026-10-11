@@ -29,17 +29,24 @@
  *   / countByStatus has typed parameters and return type, returns the correct result
  */
 
-// TODO: додай тип / add a type
-export const testCases = [
+
+type Status = "passed" | "failed" | "skipped";
+
+type TestData = {
+  id: number;
+  name: string;
+  status: Status;
+};
+
+export const testCases: TestData[] = [
   { id: 1, name: "Login with valid credentials", status: "passed" },
   { id: 2, name: "Login with invalid password", status: "failed" },
   { id: 3, name: "Logout from dashboard", status: "passed" },
   { id: 4, name: "Reset password flow", status: "skipped" },
 ];
 
-export function countByStatus(cases, status) {
-  // TODO: реалізуй / implement
-  return 0;
+export function countByStatus(cases: TestData[], status: Status): number {
+  return cases.filter((testCase) => testCase.status === status).length;
 }
 
 export {};
